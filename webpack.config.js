@@ -6,7 +6,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   },
   mode: process.env.NODE_ENV || 'development',
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
