@@ -1,4 +1,4 @@
-const path =  require('path');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -19,6 +19,17 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 10000,
+            },
+          },
+        ],
+      },
+      {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
@@ -34,13 +45,13 @@ module.exports = {
                 mode: 'local',
                 localIdentName: '[name]__[local]__[hash:base64:5]',
                 auto: /\.module\.\w+$/i,
+              },
             },
           },
-        },
-        'sass-loader',
-      ],
-      }
-    ]
+          'sass-loader',
+        ],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -52,5 +63,5 @@ module.exports = {
     open: false,
     hot: true,
   },
-  devtool: 'source-map'
-}
+  devtool: 'source-map',
+};
