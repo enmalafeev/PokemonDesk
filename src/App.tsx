@@ -2,8 +2,7 @@ import React from 'react';
 import './index.css';
 import cn from 'classnames';
 
-import s from './App.modules.scss';
-import './custom.css';
+import s from './App.module.scss';
 import { concat } from './example';
 
 const App: React.FC = () => {
