@@ -1,19 +1,18 @@
 import React from 'react';
 import './index.css';
-import cn from 'classnames';
-
-import s from './App.module.scss';
-import { concat } from './example';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 const App: React.FC = () => {
   return (
     <>
-      <div className={cn(s.header, 'green')}>
-        This is work! This is App TS Component!
+      <Header />
+      <div className="wrapper">
+        <div className="content">Main Content</div>
+        <Footer />
       </div>
-      <p>{concat('Hello ', 'world!')}</p>
     </>
-  )
+  );
 };
 
 export default App;
