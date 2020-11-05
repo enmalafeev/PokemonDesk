@@ -5,13 +5,13 @@ const Footer = () => {
   return (
     <footer className={s.root}>
       <div className={s.wrap}>
-        <div className="footerLabel">
+        <div className={s.footerLabel}>
           Make with{' '}
           <span aria-label="heart" role="img">
             ❤️
           </span>
         </div>
-        <div className="footerLabel">
+        <div className={s.footerLabel}>
           <a className={s.footerLink} href="/">
             Ours Team
           </a>
