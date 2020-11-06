@@ -2,6 +2,10 @@
   min-height: calc(100% - 93px);
   font-family: 'Karla', sans-serif;
   font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .heroTitle {
