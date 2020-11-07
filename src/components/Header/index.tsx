@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import s from './Header.module.scss';
 import { ReactComponent as HeaderLogo } from './assets/Logo.svg';
 
@@ -9,8 +10,8 @@ interface IMenu {
 }
 
 const menu: IMenu[] = [
-  { id: 1, name: 'Home', link: '#' },
-  { id: 2, name: 'Pokédex', link: '#' },
+  { id: 1, name: 'Home', link: '/' },
+  { id: 2, name: 'Pokédex', link: '/pokedex' },
   { id: 3, name: 'Legendaries', link: '#' },
   { id: 4, name: 'Documentation', link: '#' },
 ];
@@ -28,9 +29,9 @@ const Header = () => {
           <ul className={s.navigationList}>
             {menu.map(({ id, name, link }) => (
               <li className={s.navigationLink} key={id}>
-                <a className={s.navigationLink} href={link}>
+                <Link className={s.navigationLink} to={link}>
                   {name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
