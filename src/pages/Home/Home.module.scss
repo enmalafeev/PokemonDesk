@@ -4,3 +4,31 @@
   min-height: 100vh;
   background: linear-gradient(180deg, $third 0%, $primary 100%);
 }
+
+.contentWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contentText {
+  display: block;
+}
+
+.heading {
+  font-size: 72px;
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+.heroDesc {
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+.contentParallax {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
