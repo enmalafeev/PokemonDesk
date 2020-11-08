@@ -1,18 +1,18 @@
 import React from 'react';
-import './Footer.scss';
+import s from './Footer.module.scss';
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer__label">
+    <footer className={s.root}>
+      <div className={s.wrap}>
+        <div className={s.footerLabel}>
           Make with{' '}
           <span aria-label="heart" role="img">
             ❤️
           </span>
         </div>
-        <div className="footer__label">
-          <a className="footer__link" href="/">
+        <div className={s.footerLabel}>
+          <a className={s.footerLink} href="/">
             Ours Team
           </a>
         </div>

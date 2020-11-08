@@ -1,0 +1,25 @@
+.root {
+  padding-bottom: 33px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1125px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerLabel {
+  font-family: 'Karla', sans-serif;
+  font-weight: bold;
+}
+
+.footerLink {
+  color: #212121;
+  text-decoration: none;
+}
