@@ -1,0 +1,11 @@
+.root {
+  width: 100%;
+}
+
+.pokemonList {
+  width: 1125px;
+  display: grid;
+  grid-template-columns: repeat(3, 352px);
+  grid-template-rows: repeat(3, 137px);
+  grid-gap: 35px;
+}
