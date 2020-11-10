@@ -1,23 +1,12 @@
 import React from 'react';
 import cn from 'classnames';
-import { A } from 'hookrouter';
+import { A, usePath } from 'hookrouter';
 import s from './Header.module.scss';
+import { generalMenu } from '../../routes';
 import { ReactComponent as HeaderLogo } from './assets/Logo.svg';
 
-interface IMenu {
-  id: number;
-  name: string;
-  link: string;
-}
-
-const menu: IMenu[] = [
-  { id: 1, name: 'Home', link: '/' },
-  { id: 2, name: 'Pokédex', link: '/pokedex' },
-  { id: 3, name: 'Legendaries', link: '/legendaries' },
-  { id: 4, name: 'Documentation', link: '/documentation' },
-];
-
 const Header = () => {
+  const path = usePath();
   return (
     <header className={s.root}>
       <div className={s.wrap}>
@@ -28,10 +17,10 @@ const Header = () => {
         </div>
         <nav className={s.navigation}>
           <ul className={s.navigationList}>
-            {menu.map(({ id, name, link }) => (
-              <li className={s.navigationLink} key={id}>
-                <A className={cn(s.navigationLink, { [s.activeLink]: id === 1 })} href={link}>
-                  {name}
+            {generalMenu.map(({ title, link }) => (
+              <li className={s.navigationLink} key={title}>
+                <A className={cn(s.navigationLink, { [s.activeLink]: link === path })} href={link}>
+                  {title}
                 </A>
               </li>
             ))}
