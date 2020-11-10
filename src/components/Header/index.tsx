@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import cn from 'classnames';
+import { A } from 'hookrouter';
 import s from './Header.module.scss';
 import { ReactComponent as HeaderLogo } from './assets/Logo.svg';
 
@@ -12,8 +13,8 @@ interface IMenu {
 const menu: IMenu[] = [
   { id: 1, name: 'Home', link: '/' },
   { id: 2, name: 'Pokédex', link: '/pokedex' },
-  { id: 3, name: 'Legendaries', link: '#' },
-  { id: 4, name: 'Documentation', link: '#' },
+  { id: 3, name: 'Legendaries', link: '/legendaries' },
+  { id: 4, name: 'Documentation', link: '/documentation' },
 ];
 
 const Header = () => {
@@ -29,9 +30,9 @@ const Header = () => {
           <ul className={s.navigationList}>
             {menu.map(({ id, name, link }) => (
               <li className={s.navigationLink} key={id}>
-                <Link className={s.navigationLink} to={link}>
+                <A className={cn(s.navigationLink, { [s.activeLink]: id === 1 })} href={link}>
                   {name}
-                </Link>
+                </A>
               </li>
             ))}
           </ul>

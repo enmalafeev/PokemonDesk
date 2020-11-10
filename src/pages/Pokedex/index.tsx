@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './Pokedex.module.scss';
+import Header from '../../components/Header';
 import PokemonCard from '../../components/PokemonCard';
 
 const pokemons = [
@@ -217,6 +218,7 @@ const pokemons = [
 
 const Pokedex = () => (
   <div className={s.root}>
+    <Header />
     <div className={s.pokemonList}>
       {pokemons.map((pokemon) => (
         <PokemonCard
