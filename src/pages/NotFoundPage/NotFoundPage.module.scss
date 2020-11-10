@@ -1,0 +1,42 @@
+@import '../../variables';
+
+.root {
+  height: 100vh;
+  background-color: $danger;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.text {
+  font-family: 'Karla', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 700px;
+
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+  font-family: 'Karla', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 56px;
+  color: #000;
+}
+
+.subtitle > span {
+  color: #f2f2f2;
+}
+
+.layer {
+  position: absolute;
+  margin: auto;
+}
