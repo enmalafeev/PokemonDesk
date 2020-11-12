@@ -2,8 +2,14 @@
   width: 100%;
 }
 
+.title {
+  text-align: center;
+  padding-top: 40px;
+}
+
 .pokemonList {
   width: 1125px;
+  margin: auto;
   display: grid;
   grid-template-columns: repeat(3, 352px);
   grid-template-rows: repeat(3, 137px);

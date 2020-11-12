@@ -2,13 +2,13 @@ import React from 'react';
 
 interface HeadingProps {
   priority: number;
-  className: string;
+  className?: string;
 }
 
-const Heading: React.FC<HeadingProps> = ({ priority, children, className = null }) => {
+const Heading: React.FC<HeadingProps> = ({ priority, children, className }) => {
   const CustomTag = `h${priority}` as keyof JSX.IntrinsicElements;
 
-  return <CustomTag>{children}</CustomTag>;
+  return <CustomTag className={className}>{children}</CustomTag>;
 };
 
 export default Heading;
