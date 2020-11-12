@@ -4,36 +4,51 @@ import Header from '../../components/Header';
 import PokemonCard from '../../components/PokemonCard';
 import Heading from '../../components/Heading';
 
-interface IStats {
-  attack: number;
-  defense: number;
-}
-
 interface IPokemons {
   name: string;
   stats: IStats;
   types: string[];
   img: string;
 }
+interface IStats {
+  attack: number;
+  defense: number;
+}
 
-const Pokedex = () => {
-  const [totalPokemons, setTotalPokemons] = useState(0);
-  const [pokemons, setPokemons] = useState([]);
+interface IData {
+  total: number;
+  pokemons: Array<IPokemons>;
+}
+
+const usePokemons = () => {
+  const [data, setData] = useState<IData>({ total: 0, pokemons: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
-    fetch('http://zar.hosthot.ru/api/v1/pokemons?limit=20')
-      .then((response) => response.json())
-      .then((data) => {
-        setTotalPokemons(data.total);
-        setPokemons(data.pokemons);
+    const getPokemons = async () => {
+      try {
+        const response = await fetch('http://zar.hosthot.ru/api/v1/pokemons?limit=20');
+        const responseData: IData = await response.json();
+        setData(responseData);
+      } catch (err) {
+        setIsError(true);
+      } finally {
         setIsLoading(false);
-      })
-      .catch(() => setIsError(true))
-      .finally(() => setIsLoading(false));
+      }
+    };
+    getPokemons();
   }, []);
+
+  return {
+    data,
+    isLoading,
+    isError,
+  };
+};
+
+const Pokedex = () => {
+  const { data, isLoading, isError } = usePokemons();
 
   if (isLoading) {
     return <div>...Loading</div>;
@@ -47,10 +62,10 @@ const Pokedex = () => {
     <div className={s.root}>
       <Header />
       <Heading priority={1} className={s.title}>
-        {totalPokemons} Pokemons for you to choose your favorite
+        {data.total} Pokemons for you to choose your favorite
       </Heading>
       <div className={s.pokemonList}>
-        {pokemons.map((pokemon: IPokemons) => (
+        {data.pokemons.map((pokemon: IPokemons) => (
           <PokemonCard
             key={pokemon.name}
             name={pokemon.name}
