@@ -12,6 +12,7 @@
 }
 
 .contentText {
+  width: 50%;
   display: block;
 }
 
@@ -28,7 +29,16 @@
 }
 
 .contentParallax {
+  width: 50%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+}
+
+.desc {
+  font-family: 'Karla', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 37px;
 }

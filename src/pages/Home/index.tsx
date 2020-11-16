@@ -18,7 +18,7 @@ const HomePage = () => {
           <Heading priority={1} className={s.heading}>
             <b>Find</b> all your favorite <b>Pokemon</b>
           </Heading>
-          <p>You can know the type of Pokemon, its strengths, disadvantages and abilities</p>
+          <p className={s.desc}>You can know the type of Pokemon, its strengths, disadvantages and abilities</p>
           <Button onClick={() => navigate(LinkEnum.POKEDEX)}>See pokemons</Button>
         </div>
         <div className={s.contentParallax}>
