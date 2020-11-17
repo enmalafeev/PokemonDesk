@@ -15,3 +15,24 @@
   grid-template-rows: repeat(3, 137px);
   grid-gap: 35px;
 }
+
+.inputWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.searchInput {
+  width: 1088px;
+  height: 57px;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  background: #f2f2f2;
+  padding-left: 30px;
+
+  font-size: 16px;
+  font-family: 'Source Sans Pro', serif;
+  color: #212121;
+  opacity: 0.8;
+}

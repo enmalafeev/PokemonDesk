@@ -33,8 +33,14 @@ const Pokedex = () => {
       <Heading priority={1} className={s.title}>
         {data.total} Pokemons for you to choose your favorite
       </Heading>
-      <div>
-        <input type="text" value={searchValue} onChange={handleSearchChange} />
+      <div className={s.inputWrap}>
+        <input
+          className={s.searchInput}
+          type="text"
+          placeholder="Encuentra tu pokémon..."
+          value={searchValue}
+          onChange={handleSearchChange}
+        />
       </div>
       <div className={s.pokemonList}>
         {data.pokemons.map((pokemon: IPokemons) => (
