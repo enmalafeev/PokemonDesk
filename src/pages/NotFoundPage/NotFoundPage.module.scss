@@ -1,8 +1,8 @@
 @import '../../variables';
 
 .root {
-  height: 100vh;
   background-color: $danger;
+  height: 100vh;
 }
 
 .wrap {
@@ -10,7 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  height: inherit;
   position: relative;
 }
 
@@ -18,9 +18,14 @@
   font-family: 'Karla', sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 700px;
-
+  font-size: 650px;
+  text-align: center;
   color: rgba(0, 0, 0, 0.5);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .subtitle {
@@ -37,6 +42,9 @@
 }
 
 .layer {
-  position: absolute;
-  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
 }

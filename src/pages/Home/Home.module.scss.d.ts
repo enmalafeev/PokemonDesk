@@ -4,6 +4,7 @@ interface CssExports {
   'contentParallax': string;
   'contentText': string;
   'contentWrap': string;
+  'desc': string;
   'heading': string;
   'heroDesc': string;
   'root': string;
