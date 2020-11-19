@@ -1,31 +1,15 @@
 import { useState, useEffect } from 'react';
 import req from '../utils/request';
 
-export interface IPokemons {
-  name: string;
-  stats: IStats;
-  types: string[];
-  img: string;
-}
-interface IStats {
-  attack: number;
-  defense: number;
-}
-
-interface IData {
-  total: number;
-  pokemons: Array<IPokemons>;
-}
-
-const useData = (endpoint: string, query: object, deps: any[] = []) => {
-  const [data, setData] = useState<IData>({ total: 0, pokemons: [] });
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+const useData = <T>(endpoint: string, query: object, deps: any[] = []) => {
+  const [data, setData] = useState<T | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isError, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
-    const getData = async () => {
+    const getData = async (): Promise<void> => {
       try {
-        const response: IData = await req(endpoint, query);
+        const response = await req<T>(endpoint, query);
         setData(response);
       } catch (err) {
         setIsError(true);

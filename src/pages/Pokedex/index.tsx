@@ -3,21 +3,26 @@ import s from './Pokedex.module.scss';
 import Header from '../../components/Header';
 import PokemonCard from '../../components/PokemonCard';
 import Heading from '../../components/Heading';
-import useData, { IPokemons } from '../../hook/useData';
+import useData from '../../hook/useData';
+import { IPokemons, PokemonsRequest } from '../../interface/pokemons';
+
+interface IQuery {
+  name?: string;
+}
 
 const Pokedex = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [query, setQuery] = useState({});
+  const [query, setQuery] = useState<IQuery>({});
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
-    setQuery((s) => ({
-      ...s,
+    setQuery((state: IQuery) => ({
+      ...state,
       name: e.target.value,
     }));
   };
 
-  const { data, isLoading, isError } = useData('getPokemons', query, [searchValue]);
+  const { data, isLoading, isError } = useData<IPokemons>('getPokemons', query, [searchValue]);
 
   if (isLoading) {
     return <div>...Loading</div>;
@@ -31,7 +36,7 @@ const Pokedex = () => {
     <div className={s.root}>
       <Header />
       <Heading priority={1} className={s.title}>
-        {data.total} Pokemons for you to choose your favorite
+        {data && data.total} Pokemons for you to choose your favorite
       </Heading>
       <div className={s.inputWrap}>
         <input
@@ -43,16 +48,17 @@ const Pokedex = () => {
         />
       </div>
       <div className={s.pokemonList}>
-        {data.pokemons.map((pokemon: IPokemons) => (
-          <PokemonCard
-            key={pokemon.name}
-            name={pokemon.name}
-            attack={pokemon.stats.attack}
-            defense={pokemon.stats.defense}
-            types={pokemon.types}
-            src={pokemon.img}
-          />
-        ))}
+        {data &&
+          data.pokemons.map((pokemon: PokemonsRequest) => (
+            <PokemonCard
+              key={pokemon.name}
+              name={pokemon.name}
+              attack={pokemon.stats.attack}
+              defense={pokemon.stats.defense}
+              types={pokemon.types}
+              src={pokemon.img}
+            />
+          ))}
       </div>
     </div>
   );
