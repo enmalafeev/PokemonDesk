@@ -5,6 +5,7 @@ import PokemonCard from '../../components/PokemonCard';
 import Heading from '../../components/Heading';
 import useData from '../../hook/useData';
 import { IPokemons, PokemonsRequest } from '../../interface/pokemons';
+import useDebounce from '../../hook/useDebounse';
 
 interface IQuery {
   name?: string;
@@ -13,6 +14,7 @@ interface IQuery {
 const Pokedex = () => {
   const [searchValue, setSearchValue] = useState('');
   const [query, setQuery] = useState<IQuery>({});
+  const debauncedValue = useDebounce(searchValue, 500);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -22,7 +24,7 @@ const Pokedex = () => {
     }));
   };
 
-  const { data, isLoading, isError } = useData<IPokemons>('getPokemons', query, [searchValue]);
+  const { data, isLoading, isError } = useData<IPokemons>('getPokemons', query, [debauncedValue]);
 
   if (isLoading) {
     return <div>...Loading</div>;
