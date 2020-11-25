@@ -1,11 +1,13 @@
 const { default: toCapitalizeFirstLetter } = require('./toCapitalizeFirstLetter');
 
+const cases = [
+  ['lower', 'Lower'],
+  ['HIGHER', 'Higher'],
+  ['rAndoMstRinG', 'Randomstring'],
+];
+
 describe('function accept string and return string with first letter in upper case and all second letters in lower case', () => {
-  test('return right string', () => {
-    expect(toCapitalizeFirstLetter('lower')).toEqual('Lower');
-    expect(toCapitalizeFirstLetter('HIGHER')).toEqual('Higher');
-    expect(toCapitalizeFirstLetter('rAndoMstRinG')).toEqual('Randomstring');
+  test.each(cases)('return right string: %s -> %s', (checkString, expected) => {
+    expect(toCapitalizeFirstLetter(checkString)).toEqual(expected);
   });
 });
-
-// [['lower', 'Lower'], ['HIGHER', 'Higher'], ['rAndoMstRinG', 'Randomstring']];
